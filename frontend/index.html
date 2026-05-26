@@ -1,47 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
+<title>Plastic Monitoring Portal</title>
 
 <link rel="stylesheet"
 href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="style.css"/>
 
-<style>
-#map {
-    height: 100vh;
-}
-</style>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 </head>
 
 <body>
 
+<h2>Plastic Detection Portal</h2>
+
 <div id="map"></div>
 
-<script>
-
-var map = L.map('map').setView([9, 8], 5);
-
-L.tileLayer(
-'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-).addTo(map);
-
-fetch("http://127.0.0.1:8000/plastic")
-.then(res => res.json())
-.then(data => {
-
-    data.forEach(feature => {
-
-        var geom = JSON.parse(feature.geometry);
-
-        L.geoJSON(geom).addTo(map);
-
-    });
-
-});
-
-</script>
+<script src="app.js"></script>
 
 </body>
+
 </html>
