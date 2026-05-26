@@ -4,10 +4,11 @@ import psycopg2
 app = FastAPI()
 
 conn = psycopg2.connect(
-    dbname="plastic_monitoring",
-    user="postgres",
-    password="Spidders2er",
-    host="localhost"
+    dbname="postgres_b_7amy",
+    user="postgres_b_7amy_user",
+    password="mBpU31fO4XJOvi7ARapuhbZd4YqPR61u",
+    host="dpg-d8at4l0js32c73btnvtg-a",
+    port="5432"
 )
 
 @app.get("/plastic")
