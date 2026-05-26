@@ -3,6 +3,11 @@ import psycopg2
 
 app = FastAPI()
 
+@app.get("/")
+def home():
+    return {
+        "message": "Plastic Portal API is running"
+    }
 conn = psycopg2.connect(
     dbname="postgres_b_7amy",
     user="postgres_b_7amy_user",
