@@ -1,13 +1,8 @@
 from fastapi import FastAPI
 import psycopg2
 
-app = FastAPI()
 
-@app.get("/")
-def home():
-    return {
-        "message": "Plastic Portal API is running"
-    }
+app = FastAPI()
 conn = psycopg2.connect(
     dbname="postgres_b_7amy",
     user="postgres_b_7amy_user",
@@ -29,12 +24,13 @@ def get_plastic():
 
     rows = cur.fetchall()
 
-    features = []
+    output = []
 
     for row in rows:
-        features.append({
+
+        output.append({
             "id": row[0],
             "geometry": row[1]
         })
 
-    return features
+    return output
