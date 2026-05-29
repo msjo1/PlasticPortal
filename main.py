@@ -14,23 +14,18 @@ conn = psycopg2.connect(
 @app.get("/plastic")
 def get_plastic():
 
+    conn = get_connection()
     cur = conn.cursor()
 
     cur.execute("""
         SELECT id,
-        ST_AsGeoJSON(geom)
+               ST_AsGeoJSON(geom)
         FROM plastic_detection
     """)
 
     rows = cur.fetchall()
 
-    output = []
+    cur.close()
+    conn.close()
 
-    for row in rows:
-
-        output.append({
-            "id": row[0],
-            "geometry": row[1]
-        })
-
-    return output
+    return rows
