@@ -19,7 +19,7 @@ def get_plastic():
     cur.execute("""
         SELECT id,
         ST_AsGeoJSON(geom)
-        FROM plastic_detection
+        FROM Plastic_Detection_DB
     """)
 
     rows = cur.fetchall()
