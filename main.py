@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 import psycopg2
 
-
 app = FastAPI()
+
 conn = psycopg2.connect(
     dbname="postgres_b_7amy",
     user="postgres_b_7amy_user",
