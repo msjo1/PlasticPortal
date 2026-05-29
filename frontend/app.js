@@ -7,7 +7,7 @@ L.tileLayer(
 }
 ).addTo(map);
 
-fetch("https://plasticportal-1.onrender.com/plastic")
+fetch("https://plasticportal.onrender.com/plastic")
 
 .then(response => response.json())
 
