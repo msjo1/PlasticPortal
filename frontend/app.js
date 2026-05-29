@@ -7,15 +7,28 @@ L.tileLayer(
 }
 ).addTo(map);
 
-fetch("https://plasticportal.onrender.com")
+fetch("https://your-backend.onrender.com/plastic")
+
 .then(response => response.json())
+
 .then(data => {
 
     data.forEach(feature => {
 
         var geom = JSON.parse(feature.geometry);
 
-        L.geoJSON(geom).addTo(map);
+        L.geoJSON(geom, {
+
+            onEachFeature: function(feature, layer) {
+
+                layer.bindPopup(
+                    "Plastic Detection ID: " +
+                    feature.id
+                );
+
+            }
+
+        }).addTo(map);
 
     });
 
