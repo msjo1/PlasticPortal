@@ -28,6 +28,11 @@ fetch("https://plasticportal.onrender.com/plastic")
             }
 
         }).addTo(map);
+        var heat = L.heatLayer([
+                    [9.1, 8.2, 0.5],
+                    [9.2, 8.3, 0.8],
+                    [9.4, 8.5, 1.0]
+        ]).addTo(map);
 
     });
 
