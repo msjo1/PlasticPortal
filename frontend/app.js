@@ -1,5 +1,3 @@
-alert("app.js is running");
-
 var map = L.map('map').setView([9, 8], 5);
 
 L.tileLayer(
@@ -9,6 +7,12 @@ L.tileLayer(
 }
 ).addTo(map);
 
-L.marker([6.5244, 3.3792])
-.addTo(map)
-.bindPopup("Test Marker");
+fetch("https://plasticportal.onrender.com/plastic")
+.then(response => response.json())
+.then(data => {
+
+    alert("Received " + data.length + " records");
+
+    console.log(data);
+
+});
