@@ -33,6 +33,21 @@ fetch("https://plasticportal.onrender.com/plastic")
                     [9.2, 8.3, 0.8],
                     [9.4, 8.5, 1.0]
         ]).addTo(map);
+        var legend = L.control({position: 'bottomright'});
+
+            legend.onAdd = function(map) {
+            
+                var div = L.DomUtil.create('div', 'info legend');
+            
+                div.innerHTML += '<h4>Plastic Density</h4>';
+                div.innerHTML += '<i style="background:blue"></i> Low<br>';
+                div.innerHTML += '<i style="background:yellow"></i> Medium<br>';
+                div.innerHTML += '<i style="background:red"></i> High<br>';
+            
+                return div;
+            };
+            
+            legend.addTo(map);
 
     });
 
