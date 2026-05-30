@@ -34,3 +34,9 @@ def country_summary():
     rows = cur.fetchall()
 
     return rows
+
+@app.get("/")
+def home():
+    return {
+        "message": "New version deployed"
+    }
