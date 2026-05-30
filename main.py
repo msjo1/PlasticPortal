@@ -42,3 +42,20 @@ def get_plastic():
         })
 
     return output
+
+    @app.get("/country_summary")
+    def country_summary():
+    
+        cur = conn.cursor()
+    
+        cur.execute("""
+            SELECT country,
+                   COUNT(*) AS detections
+            FROM plastic_detection
+            GROUP BY country
+            ORDER BY detections DESC
+        """)
+    
+        rows = cur.fetchall()
+
+    return rows
