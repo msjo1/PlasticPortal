@@ -1,30 +1,22 @@
 var map = L.map('map').setView([9, 8], 5);
 
 L.tileLayer(
-'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 {
-    attribution: 'Esri'
+    attribution: '© OpenStreetMap'
 }
 ).addTo(map);
 
-fetch("https://plasticportal.onrender.com/plastic")
+fetch("https://YOUR-BACKEND-URL.onrender.com/plastic")
 .then(response => response.json())
 .then(data => {
 
-    data.forEach(item => {
+    data.forEach(feature => {
 
-        var geom = JSON.parse(item.geometry);
+        var geom = JSON.parse(feature.geometry);
 
-        L.geoJSON(geom)
-        .bindPopup(
-            "Plastic Detection ID: " + item.id
-        )
-        .addTo(map);
-var heat = L.heatLayer([
-    [9.1, 8.2, 0.5],
-    [9.2, 8.3, 0.8],
-    [9.4, 8.5, 1.0]
-]).addTo(map);
+        L.geoJSON(geom).addTo(map);
+
     });
 
 });
