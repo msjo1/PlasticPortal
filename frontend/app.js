@@ -52,3 +52,30 @@ fetch("https://plasticportal.onrender.com/plastic")
     });
 
 });
+
+fetch("https://plasticportal.onrender.com/country_summary")
+.then(response => response.json())
+.then(data => {
+
+    const labels = data.map(row => row[0]);
+
+    const values = data.map(row => row[1]);
+
+    new Chart(
+        document.getElementById("countryChart"),
+        {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Plastic Detections",
+                    data: values
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        }
+    );
+
+});
