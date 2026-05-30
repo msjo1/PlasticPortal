@@ -1,3 +1,5 @@
+alert("app.js loaded");
+
 var map = L.map('map').setView([9, 8], 5);
 
 L.tileLayer(
