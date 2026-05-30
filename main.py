@@ -85,4 +85,18 @@ def country_summary():
     rows = cur.fetchall()
 
     return rows
+
+@app.get("/stats")
+def stats():
+
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT COUNT(*)
+        FROM plastic_detection
+    """)
+
+    total = cur.fetchone()[0]
+
+    return {"total_detections": total}
     
