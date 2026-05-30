@@ -11,8 +11,18 @@ fetch("https://plasticportal.onrender.com/plastic")
 .then(response => response.json())
 .then(data => {
 
-    alert("Received " + data.length + " records");
+    data.forEach(item => {
 
-    console.log(data);
+        var geom = JSON.parse(item.geometry);
+
+        var coords = geom.coordinates;
+
+        L.marker([
+            coords[1],   // latitude
+            coords[0]    // longitude
+        ])
+        .addTo(map)
+        .bindPopup("Plastic Detection ID: " + item.id);
+});
 
 });
