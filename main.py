@@ -18,22 +18,6 @@ conn = psycopg2.connect(
     host="dpg-d8at4l0js32c73btnvtg-a",
     port="5432"
 )
-@app.get("/country_summary")
-def country_summary():
-
-    cur = conn.cursor()
-
-    cur.execute("""
-        SELECT country,
-               COUNT(*) AS detections
-        FROM plastic_detection
-        GROUP BY country
-        ORDER BY detections DESC
-    """)
-
-    rows = cur.fetchall()
-
-    return rows
 
 @app.get("/")
 def home():
