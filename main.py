@@ -4,6 +4,13 @@ import psycopg2
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 conn = psycopg2.connect(
     dbname="postgres_b_7amy",
     user="postgres_b_7amy_user",
