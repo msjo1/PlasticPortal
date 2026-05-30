@@ -1,11 +1,12 @@
-alert("app.js loaded");
+var map = L.map('map').setView([9, 8], 5);
 
-fetch("https://plasticportal.onrender.com/plastic")
-.then(response => response.json())
-.then(data => {
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+    attribution: '© OpenStreetMap'
+}
+).addTo(map);
 
-    alert("Data received");
-
-    console.log(data);
-
-});
+L.marker([6.5244, 3.3792])
+.addTo(map)
+.bindPopup("Lagos Test");
