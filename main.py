@@ -19,33 +19,8 @@ conn = psycopg2.connect(
     port="5432"
 )
 
-@app.get("/plastic")
-def get_plastic():
-
-    cur = conn.cursor()
-
-    cur.execute("""
-        SELECT id,
-        ST_AsGeoJSON(geom)
-        FROM plastic_detection
-    """)
-
-    rows = cur.fetchall()
-
-    output = []
-
-    for row in rows:
-
-        output.append({
-            "id": row[0],
-            "geometry": row[1]
-        })
-
-    return output
-
-    @app.get("/country_summary")
-    def country_summary():
-    
+@app.get("/country_summary")
+def country_summary():
         cur = conn.cursor()
     
         cur.execute("""
