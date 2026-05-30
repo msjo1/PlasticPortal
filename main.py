@@ -61,9 +61,3 @@ def country_summary():
 
     return rows
     
-
-@app.get("/")
-def home():
-    return {
-        "message": "New version deployed"
-    }
